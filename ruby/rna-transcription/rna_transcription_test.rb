@@ -29,12 +29,10 @@ class ComplementTest < Minitest::Test
   end
 
   def test_correctly_handles_completely_invalid_inputs
-    skip
     assert_raises(ArgumentError) { Complement.of_dna('XXX') }
   end
 
   def test_correctly_handles_partially_invalid_inputs
-    skip
     assert_raises(ArgumentError) { Complement.of_dna('ACGTXXXCTTAA') }
   end
 
