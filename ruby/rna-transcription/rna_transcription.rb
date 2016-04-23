@@ -1,18 +1,20 @@
-require 'pry'
 VERSION = 3
+KEYS = ['G', 'C', 'T', 'A']
 
 class Complement
 
   def self.of_dna(x)
     strand = x.chars
-    # binding.pry
     valid = strand.select {|char| complements_hash.has_key?(char)}
 
-    if valid == []
-      raise ArgumentError.new("Invalid Character")
+    if strand.any? {|char| KEYS.include?(char) == false }
+      raise ArgumentError.new("Invalid Characters")
+
+    elsif valid == []
+      raise ArgumentError.new("Invalid Characters")
 
     else
-    valid.map {|letter| complements_hash.fetch(letter)}.join
+      valid.map {|letter| complements_hash.fetch(letter)}.join
     end
   end
 
